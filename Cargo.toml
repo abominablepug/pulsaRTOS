@@ -4,14 +4,10 @@ version = "0.1.0"
 authors = ["Eli Nahoum <esnahoum@gmail.com>"]
 edition = "2024"
 
-[dependencies]
-
-[profile.dev]
-panic = "abort"
-[profile.release]
-panic = "abort"
-
 [[bin]]
 name = "pulsaRTOS"
 test = false
 bench = false
+
+[dependencies]
+bootloader = "0.9"
