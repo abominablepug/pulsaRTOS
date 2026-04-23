@@ -9,12 +9,6 @@ mod vga_buffer;
 
 use core::panic::PanicInfo;
 
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
-    loop {}
-}
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
 pub enum QemuExitCode {
@@ -43,8 +37,24 @@ pub fn test_runner(tests: &[&dyn Fn()]) {
 #[test_case]
 fn trivial_assertion() {
     serial_print!("trivial assertion... ");
-    assert_eq!(1, 1);
+    assert_eq!(0, 1);
     serial_println!("[ok]");
+}
+
+#[cfg(not(test))]
+#[panic_handler]
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
+    loop {}
+}
+
+#[cfg(test)]
+#[panic_handler]
+fn panic(info: &PanicInfo) -> ! {
+    serial_println!("[failed]\n");
+    serial_println!("Error: {}\n", info);
+    exit_qemu(QemuExitCode::Failed);
+    loop {}
 }
 
 #[unsafe(no_mangle)]
