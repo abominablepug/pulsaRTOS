@@ -6,7 +6,7 @@ edition = "2024"
 
 [[bin]]
 name = "pulsaRTOS"
-test = false
+test = true
 bench = false
 
 [dependencies]
