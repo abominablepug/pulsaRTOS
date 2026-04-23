@@ -3,6 +3,8 @@
 * Issue: Printing testing suite output to terminal requires a way for the OS to communicate with the host system
 * Solution: The `serial_print!` and `serial_println!` macros were redefined to read from the first SERIAL port of the OS to the host computer allowing for proper test output without the need for a display.
 
+---
+
 `2026-04-22`
 * Progress: Created new `vga_buffer` file with logic to reconfigure and simplify the `print!` and `println!` macros to print to the buffer rather than to the terminal.
 * Issue: Syntax regarding reconfiguring the macros was difficult to follow along with and debug
