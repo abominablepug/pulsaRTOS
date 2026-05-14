@@ -11,9 +11,14 @@ use pulsaRTOS::println;
 pub extern "C" fn _start() -> ! {
     println!("Welcome to PulsaRTOS!\nA simple real-time operating system written in Rust.\n");
 
+    pulsaRTOS::init();
+
+    x86_64::instructions::interrupts::int3();
+
     #[cfg(test)]
     test_main();
 
+    println!("Crash Prevented");
     loop {}
 }
 
