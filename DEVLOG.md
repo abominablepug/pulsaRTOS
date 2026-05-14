@@ -1,3 +1,8 @@
+`2026-05-14`
+* Progress: Added `InterruptDescriptorTable` and began implementing error handling functions
+* Issue: Mostly boilerplate `x86_64` code so no issues really, mainly just to prevent future issues with triple and double faults
+* Solution: Implementing corresponding error handling functions should prevent unnecessary crashes and increase system resilience
+
 `2026-04-23`
 * Progress: Testing suite including unit tests, implementation tests, and panic tests have all been implemented and tested (pun intended)
 * Issue: Printing testing suite output to terminal requires a way for the OS to communicate with the host system
