@@ -1,4 +1,9 @@
 `2026-05-14`
+* Progress: Added double fault and stack overflow handling functions, added interrupt controllers for timer and keyboard input
+* Issue: Managing stacks to prevent triple faults and handle stack overflows was difficult to understand and hence implement
+* Solution: Learned more about `x86_64` architecture and hardware standards which helped substantially with implementation
+
+`2026-05-13`
 * Progress: Added `InterruptDescriptorTable` and began implementing error handling functions
 * Issue: Mostly boilerplate `x86_64` code so no issues really, mainly just to prevent future issues with triple and double faults
 * Solution: Implementing corresponding error handling functions should prevent unnecessary crashes and increase system resilience
