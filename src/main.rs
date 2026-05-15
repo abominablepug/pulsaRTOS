@@ -17,14 +17,14 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("Crash Prevented");
-    loop {}
+    pulsaRTOS::hlt_loop();
 }
 
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    pulsaRTOS::hlt_loop();
 }
 
 #[cfg(test)]
