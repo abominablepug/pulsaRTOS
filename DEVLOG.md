@@ -1,3 +1,17 @@
+`2026-05-16`
+* Progress: Finished adding heap allocations to the operating system allowing for dynamic memory assignment
+* Issue: Using allocations requires redefining permanent Rust functions in the config which was difficult to figure out
+* Solution: After learning more about how Rust memory allocation works, I was more confident in implementing custom `alloc` and `dealloc` functions
+
+---
+
+`2026-05-15`
+* Progress: Added proper paging to operating system and implemented a method to convert virtual adresses to physical adresses and vice versa
+* Issue: Determining the right way to implment address conversion for my specific operating system was an interesting decisiong that I'll probably revisit
+* Solution: With the current bootloader I'm using I was forced to choose between a fixed offset and recursive paging approach, for temporary simplicity I chose fixed offset
+
+---
+
 `2026-05-14`
 * Progress: Added double fault and stack overflow handling functions, added interrupt controllers for timer and keyboard input
 * Issue: Managing stacks to prevent triple faults and handle stack overflows was difficult to understand and hence implement
