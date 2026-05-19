@@ -8,7 +8,7 @@ extern crate alloc;
 
 use alloc::{boxed::Box, rc::Rc, vec, vec::Vec};
 use bootloader::{BootInfo, entry_point};
-use core::{ffi::c_long, panic::PanicInfo};
+use core::panic::PanicInfo;
 use pulsaRTOS::println;
 use x86_64::VirtAddr;
 
