@@ -1,3 +1,17 @@
+`2026-05-19`
+* Progress: Implemented fixed size heap allocation manually with various predefined sizes of powers of 2
+* Issue: Adding backup allocation methods that occur when block size isn't large enough to store heap data
+* Solution: Using a linked list allocator to implement larger blocks of data and using lazy allocations for the fixed size allows for larger allocations
+
+---
+
+`2026-05-18`
+* Progress: Implemented bump heap allocation and linked list heap allocation myself
+* Issue: Bump heap allocation struggles with freeing up memory after use and linked list allocation progressively has smaller blocks of memory
+* Solution: Will soone implement fixed size linked list heap allocation in order to solve these issues
+
+---
+
 `2026-05-16`
 * Progress: Finished adding heap allocations to the operating system allowing for dynamic memory assignment
 * Issue: Using allocations requires redefining permanent Rust functions in the config which was difficult to figure out
