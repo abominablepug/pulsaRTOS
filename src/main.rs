@@ -10,6 +10,7 @@ use alloc::{boxed::Box, rc::Rc, vec, vec::Vec};
 use bootloader::{BootInfo, entry_point};
 use core::panic::PanicInfo;
 use pulsaRTOS::println;
+use pulsaRTOS::task::{Task, executor::Executor, keyboard};
 use x86_64::VirtAddr;
 
 entry_point!(kernel_main);
@@ -28,26 +29,10 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
     allocator::init_heap(&mut mapper, &mut frame_allocator).expect("heap initialization failed");
 
-    let heap_value = Box::new(41);
-    println!("heap value at {:p}", heap_value);
-
-    let mut vec = Vec::new();
-    for i in 0..500 {
-        vec.push(i);
-    }
-    println!("vec at {:p}", vec.as_slice());
-
-    let reference_counted = Rc::new(vec![1, 2, 3]);
-    let cloned_reference = reference_counted.clone();
-    println!(
-        "current ref count is {}",
-        Rc::strong_count(&cloned_reference)
-    );
-    core::mem::drop(reference_counted);
-    println!(
-        "current ref count is now {}",
-        Rc::strong_count(&cloned_reference)
-    );
+    let mut executor = Executor::new();
+    executor.spawn(Task::new(example_task()));
+    executor.spawn(Task::new(keyboard::print_keypresses()));
+    executor.run();
 
     #[cfg(test)]
     test_main();
@@ -67,4 +52,13 @@ fn panic(info: &PanicInfo) -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     pulsaRTOS::test_panic_handler(info)
+}
+
+async fn async_number() -> u32 {
+    43
+}
+
+async fn example_task() {
+    let number = async_number().await;
+    println!("async number: {}", number);
 }
