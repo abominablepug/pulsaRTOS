@@ -6,11 +6,11 @@
 
 A freestanding, bare-metal x86_64 operating system kernel written in Rust. It notably includes fault resilience, physical & virtual memory management, and deterministic execution.
 
-add image here
+<p align="center">
+  <img width="669" height="263" alt="img-1" src="https://github.com/user-attachments/assets/0981998f-c94a-4f7d-9435-64156796bfb1" />
+</p>
 
 ---
-
-add video here
 
 ## Overview
 
@@ -26,7 +26,7 @@ I built PulsaRTOS to explore and learn more about systems engineering, kernel-le
 
 ---
 
-more images
+https://github.com/user-attachments/assets/6dbc5682-cb88-4966-9ac5-1e662de89d37
 
 ## Technical Architecture
 
@@ -100,6 +100,8 @@ Testing bare-metal kernels requires bridging the virtual machine with the host o
 - `heap_allocation.rs`: Exhaustive test of `Box`, dynamic `Vec` sizing, and allocation saturation over 100 KiB heap bounds.
 - `stack_overflow.rs`: Deliberately induces infinite recursion to verify TSS / IST stack switching.
 - `should_panic.rs`: Validates panic handler assertion trapping and error reporting.
+
+https://github.com/user-attachments/assets/291b7ada-0afe-43ce-956f-1f3b2dc92bb6
 
 ---
 
